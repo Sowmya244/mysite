@@ -1,3 +1,1 @@
-mountpoints:
-  /: https://raw.githubusercontent.com/sowmya244/mysite/main/docs/
-  type: markup
+mountpoints:/: https://drive.google.com/drive/u/0/folders/1tDIuRUwKhnqpEQv7FOrWcYwMFNB0DGNW
