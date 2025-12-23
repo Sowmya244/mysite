@@ -1,66 +1,23 @@
 /*
- * Hero Block – Background Image + Title + Subtitle + CTA
- * Google Docs caption-safe
+ * Hero Block – Enhanced Creative Hero
  */
 
 export default function decorate(block) {
-  const rows = [...block.children];
+  const picture = block.querySelector('picture');
+  const title = block.querySelector('h2');
+  const paragraphs = [...block.querySelectorAll('p')];
+  const subtitle = paragraphs.find((p) => !p.textContent.includes('shutterstock'));
+  const cta = block.querySelector('a');
 
-  let picture;
-  let title;
-  let subtitle;
-  let cta;
-
-  let titleFound = false;
-
-  rows.forEach((row) => {
-    // Image (background)
-    const pic = row.querySelector('picture');
-    if (pic) {
-      picture = pic;
-      return;
-    }
-
-    // Title
-    const h1 = row.querySelector('h1');
-    if (h1) {
-      title = h1;
-      titleFound = true;
-      return;
-    }
-
-    // Subtitle = first <p> AFTER title (ignores image caption)
-    if (titleFound && !subtitle) {
-      const p = row.querySelector('p');
-      if (p) {
-        subtitle = p;
-        return;
-      }
-    }
-
-    // CTA
-    const a = row.querySelector('a');
-    if (a) {
-      cta = a;
-    }
-  });
-
-  // Build overlay content
   const content = document.createElement('div');
-  content.className = 'hero-content';
+  content.className = 'hero-content hero-animate';
 
   if (title) content.append(title);
   if (subtitle) content.append(subtitle);
   if (cta) content.append(cta);
 
-  // Clear original block
-  block.textContent = '';
+  block.innerHTML = '';
 
-  // Background image
-  if (picture) {
-    block.append(picture);
-  }
-
-  // Overlay content
+  if (picture) block.append(picture);
   block.append(content);
 }
