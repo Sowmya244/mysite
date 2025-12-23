@@ -1,5 +1,5 @@
 /* ============================
-   Hero – Background Image
+   Hero – Centered Overlay
    ============================ */
 
 .hero-container .hero-wrapper {
@@ -40,7 +40,7 @@
   z-index: -1;
 }
 
-/* Content overlay */
+/* Content */
 .hero-content {
   max-width: 900px;
   color: #fff;

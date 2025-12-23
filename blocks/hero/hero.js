@@ -1,5 +1,6 @@
 /*
  * Hero Block – Background Image + Title + Subtitle + CTA
+ * Google Docs caption-safe
  */
 
 export default function decorate(block) {
@@ -10,18 +11,41 @@ export default function decorate(block) {
   let subtitle;
   let cta;
 
+  let titleFound = false;
+
   rows.forEach((row) => {
-    if (row.querySelector('picture')) {
-      picture = row.querySelector('picture');
-    } else if (row.querySelector('h1')) {
-      title = row.querySelector('h1');
-    } else if (row.querySelector('a')) {
-      cta = row.querySelector('a');
-    } else if (row.querySelector('p')) {
-      subtitle = row.querySelector('p');
+    // Image (background)
+    const pic = row.querySelector('picture');
+    if (pic) {
+      picture = pic;
+      return;
+    }
+
+    // Title
+    const h1 = row.querySelector('h1');
+    if (h1) {
+      title = h1;
+      titleFound = true;
+      return;
+    }
+
+    // Subtitle = first <p> AFTER title (ignores image caption)
+    if (titleFound && !subtitle) {
+      const p = row.querySelector('p');
+      if (p) {
+        subtitle = p;
+        return;
+      }
+    }
+
+    // CTA
+    const a = row.querySelector('a');
+    if (a) {
+      cta = a;
     }
   });
 
+  // Build overlay content
   const content = document.createElement('div');
   content.className = 'hero-content';
 
@@ -29,7 +53,7 @@ export default function decorate(block) {
   if (subtitle) content.append(subtitle);
   if (cta) content.append(cta);
 
-  // Clear original content
+  // Clear original block
   block.textContent = '';
 
   // Background image
