@@ -113,7 +113,7 @@
   animation: heroFadeUp 0.8s ease-out both;
 }
 
-@keyframes heroFadeUp {
+@keyframes hero-fade-up {
   from {
     opacity: 0;
     transform: translateY(16px);
