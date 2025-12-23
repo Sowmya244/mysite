@@ -1,0 +1,129 @@
+/* ============================
+   Accordion Block – Full CSS
+   ============================ */
+
+.accordion {
+  max-width: 100%;
+}
+
+/* Accordion card */
+.accordion details {
+  border: 1px solid #dadada;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Space between items */
+.accordion details + details {
+  margin-top: 24px;
+}
+
+/* Hover effect */
+.accordion details:hover {
+  box-shadow: 0 6px 16px rgb(0 0 0 / 8%);
+  border-color: #c35656;
+}
+
+/* Summary (header) */
+.accordion details summary {
+  position: relative;
+  padding: 16px 48px 16px 16px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color, #333);
+  background-color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+/* Remove default marker */
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Hover & focus */
+.accordion details summary:hover,
+.accordion details summary:focus-visible {
+  background-color: var(--light-color, #f5f5f5);
+}
+
+/* Arrow icon */
+.accordion details summary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid currentcolor;
+  border-width: 2px 2px 0 0;
+  transform: translateY(-50%) rotate(135deg);
+  transition: transform 0.25s ease;
+  opacity: 0.7;
+}
+
+/* Arrow when open */
+.accordion details[open] summary::after {
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* Open state header */
+.accordion details[open] summary {
+  background-color: var(--light-color, #f5f5f5);
+}
+
+/* Body */
+.accordion details .accordion-item-body {
+  padding: 0 16px 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-color, #444);
+  background-color: var(--background-color, #fafafa);
+  border-top: 1px solid #e0e0e0;
+  animation: accordionFade 0.25s ease-in-out;
+}
+
+/* Paragraph spacing */
+.accordion details .accordion-item-body p {
+  margin-bottom: 0.8em;
+}
+
+.accordion details .accordion-item-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Open card emphasis */
+.accordion details[open] {
+  box-shadow: 0 10px 22px rgb(0 0 0 / 10%);
+}
+
+/* Animation */
+@keyframes accordion-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Mobile */
+@media (width <= 600px) {
+  .accordion details summary {
+    font-size: 15px;
+    padding: 14px 44px 14px 14px;
+  }
+
+.accordion details .accordion-item-body {
+  animation: accordion-fade 0.25s ease-in-out;
+}
+}
