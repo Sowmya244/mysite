@@ -142,6 +142,7 @@
     padding: 16px;
   }
 }
+
 .accordion summary:hover {
   background-color: #f9fafb;
 }
