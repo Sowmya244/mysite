@@ -1,37 +1,99 @@
-.hero-container .hero-wrapper {
-  max-width: unset;
-  padding: 0;
-}
+/* ============================
+   Hero Block – AI Learning Hub
+   ============================ */
 
 .hero {
-  position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  padding: 80px 24px;
+  background:
+    radial-gradient(circle at top right, rgb(37 99 235 / 12%), transparent 45%),
+    radial-gradient(circle at bottom left, rgb(99 102 241 / 12%), transparent 45%),
+    #f8fafc;
+  border-radius: 24px;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+/* Title */
+.hero-title h1 {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+/* Subtitle */
+.hero-subtitle p {
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 600;
+  color: #2563eb;
 }
 
-@media (width >= 900px) {
+/* Description */
+.hero-description p {
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+/* Meta (Badge area) */
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* CTA */
+.hero-cta {
+  margin-top: 12px;
+}
+
+.hero-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 26px;
+  background-color: #2563eb;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.hero-cta a:hover {
+  background-color: #1e40af;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (width <= 600px) {
   .hero {
-    padding: 40px 32px;
+    padding: 56px 16px;
+  }
+
+  .hero-inner {
+    gap: 16px;
+  }
+
+  .hero-cta a {
+    width: fit-content;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta a {
+    transition: none;
   }
 }
