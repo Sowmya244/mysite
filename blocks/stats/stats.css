@@ -1,0 +1,52 @@
+/* ============================
+   Stats – Animated Metrics
+   ============================ */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 32px;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+/* Stat card */
+.stat {
+  background: linear-gradient(180deg, #fff, #f8fafc);
+  border-radius: 20px;
+  padding: 32px 20px;
+  box-shadow: 0 20px 40px rgb(0 0 0 / 8%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgb(0 0 0 / 12%);
+}
+
+/* Number */
+.stat-number {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(90deg, #6366f1, #38bdf8);
+  background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+}
+
+/* Label */
+.stat-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Mobile */
+@media (width <= 600px) {
+  .stats {
+    padding: 48px 16px;
+    gap: 24px;
+  }
+}
