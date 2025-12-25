@@ -1,21 +1,15 @@
 /* =========================
-   G HERO – RESET
+   G HERO BASE
 ========================= */
 .ghero {
   position: relative;
   height: 100vh;
   overflow: hidden;
   color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  text-align: center;
-  padding-bottom: 12vh;
 }
 
 /* =========================
-   IMAGE (NO QUALITY LOSS)
+   IMAGE
 ========================= */
 .ghero picture,
 .ghero img {
@@ -27,85 +21,77 @@
 
 .ghero img {
   object-fit: cover;
-  filter: none !important;
-  background: none !important;
 }
 
 /* =========================
-   CONTENT OVER IMAGE
+   CONTENT WRAPPER
 ========================= */
-.ghero > :not(picture, img) {
+.ghero-content {
   position: relative;
   z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 12vh;
 }
 
 /* =========================
    TITLE
 ========================= */
-.ghero h1 {
+.ghero-content h1,
+.ghero-content h2 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-weight: 400;
-  letter-spacing: 0.02em;
   margin-bottom: 0.75rem;
 }
 
 /* =========================
    TAGLINE
 ========================= */
-.ghero p {
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
+.ghero-content p {
   text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.85rem;
   margin-bottom: 2rem;
 }
 
 /* =========================
-   CTA GROUP (FORCE BOTH)
+   CTAs
 ========================= */
-.ghero a {
-  all: unset; /* 🔥 resets global button/link styles */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.ghero-content a {
+  display: inline-block;
   min-width: 140px;
   padding: 0.85rem 2.4rem;
   margin: 0 0.6rem;
   background: #fff;
   color: #000;
   border: 1px solid #fff;
-  border-radius: 0;
-  cursor: pointer;
+  text-decoration: none;
   font-size: 0.75rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   transition: background 0.25s ease, color 0.25s ease;
 }
 
-/* Hover */
-.ghero a:hover {
+.ghero-content a:hover {
   background: transparent;
   color: #fff;
-}
-
-/* =========================
-   REMOVE EXTRA BELOW CONTENT
-========================= */
-.ghero + * {
-  display: none;
 }
 
 /* =========================
    MOBILE
 ========================= */
 @media (width <= 768px) {
-  .ghero {
+  .ghero-content {
     padding-bottom: 10vh;
   }
 
-  .ghero a {
+  .ghero-content a {
     display: block;
     margin: 0.5rem 0;
-    min-width: 180px;
   }
 }
