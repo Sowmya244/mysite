@@ -1,69 +1,71 @@
 /* =========================
-   HERO BASE (EDS SAFE)
+   G HERO – BASE
 ========================= */
-.hero {
+.ghero {
   position: relative;
   height: 100vh;
   overflow: hidden;
-}
-
-/* Image */
-.hero img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.85);
-  transform: scale(1.08) translateY(0);
-  transition: transform 1.2s ease;
-  will-change: transform;
-}
-
-/* Content */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: #fff;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
-/* Visible state */
-.hero.is-visible .hero-content {
-  opacity: 1;
-  transform: translateY(0);
+/* =========================
+   IMAGE (FULL QUALITY)
+========================= */
+.ghero picture,
+.ghero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.hero.is-visible img {
-  transform: scale(1) translateY(0);
+.ghero img {
+  object-fit: cover;
+
+  /* ❌ NO FILTERS */
+  filter: none;
+  background: none;
 }
 
-/* Typography */
-.hero-content h1 {
+/* =========================
+   CONTENT OVER IMAGE
+========================= */
+.ghero > :not(picture, img) {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   TITLE
+========================= */
+.ghero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(4rem, 12vw, 12rem);
+  font-size: clamp(4rem, 12vw, 10rem);
   letter-spacing: 0.25em;
   font-weight: 400;
   margin-bottom: 1rem;
 }
 
-.hero-content p {
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
+/* =========================
+   TAGLINE
+========================= */
+.ghero p {
   text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
   margin-bottom: 2.5rem;
 }
 
-/* Buttons */
-.hero-content a {
+/* =========================
+   CTA BUTTONS
+========================= */
+.ghero a {
+  display: inline-block;
   border: 1px solid #fff;
   padding: 0.75rem 2.2rem;
   margin: 0 0.75rem;
@@ -74,29 +76,20 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-.hero-content a:hover {
+.ghero a:hover {
   background: #fff;
   color: #000;
 }
 
 /* =========================
-   REDUCED MOTION (A11Y)
+   MOBILE
 ========================= */
-@media (prefers-reduced-motion: reduce) {
-  .hero img,
-  .hero-content {
-    transition: none !important;
-    transform: none !important;
-  }
-}
-
-/* Mobile */
 @media (width <= 768px) {
-  .hero-content h1 {
+  .ghero h1 {
     letter-spacing: 0.15em;
   }
 
-  .hero-content a {
+  .ghero a {
     display: block;
     margin: 0.5rem 0;
   }
