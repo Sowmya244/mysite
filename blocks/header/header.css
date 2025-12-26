@@ -1,113 +1,76 @@
 /* =========================
-   SOFT LOOPS HEADER
-========================= */
+   Soft Loops Header (dynamic)
+   ========================= */
 
-/* Base header styles */
+/* Base header */
 .sl-header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
-  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+  z-index: 999;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Grid layout container */
+/* Header grid */
 .sl-header-inner {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   height: 96px;
   padding: 0 32px;
-  transition: height 0.35s ease;
+  transition: height 0.4s ease;
 }
 
-/* Left / Right */
-.sl-header-left {
-  justify-self: start;
-}
-
-.sl-header-right {
-  justify-self: end;
-  display: flex;
-  gap: 20px;
-}
-
-/* Buttons */
-.sl-header button {
+/* Left button */
+.sl-btn-contact {
   background: none;
   border: none;
-  cursor: pointer;
   font-size: 14px;
-  font-family: inherit;
-  letter-spacing: 0.08em;
-  padding: 8px 0;
-  transition: opacity 0.35s ease;
+  cursor: pointer;
 }
 
-.sl-header button:hover {
-  opacity: 0.7;
-}
-
-/* =========================
-   LOGO (BASE)
-========================= */
-.sl-header-logo {
-  justify-self: center;
-}
-
+/* Logo center */
 .sl-header-logo a {
   font-family: 'Playfair Display', serif;
   font-size: 48px;
-  letter-spacing: 0.24em;
   text-decoration: none;
-  display: inline-block;
-  transition: font-size 0.35s ease;
-  white-space: nowrap;
+  letter-spacing: 0.24em;
+  transition: font-size 0.3s ease;
+  color: inherit;
 }
 
-/* =========================
-   COLOR STATES (GENERIC FIRST!)
-========================= */
+/* Right icons */
+.sl-header-right .sl-icon {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 18px;
+}
 
-/* Hero colors */
+/* -----------------------------------
+   Hero state (before scroll)
+   ----------------------------------- */
+
 .sl-header.is-hero {
-  background-color: transparent;
+  background: transparent;
   color: #fff;
 }
 
-.sl-header.is-hero button {
-  color: #fff;
-}
-
-.sl-header.is-hero a {
-  color: #fff;
-}
-
-/* Scrolled colors */
-.sl-header.is-scrolled {
-  background-color: #fff;
-  box-shadow: 0 1px 0 rgb(0 0 0 / 8%);
-  color: #000;
-}
-
-.sl-header.is-scrolled button {
-  color: #000;
-}
-
-.sl-header.is-scrolled a {
-  color: #000;
-}
-
-/* =========================
-   STATE-SPECIFIC LOGO SIZES
-========================= */
-
-/* Hero logo */
 .sl-header.is-hero .sl-header-logo a {
   font-size: 48px;
 }
 
-/* Scrolled logo */
+/* -----------------------------------
+   Scrolled state
+   ----------------------------------- */
+
+.sl-header.is-scrolled {
+  background: #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+  color: #000;
+}
+
 .sl-header.is-scrolled .sl-header-inner {
   height: 72px;
 }
@@ -116,34 +79,18 @@
   font-size: 22px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* -----------------------------------
+   Mobile responsive
+   ----------------------------------- */
+
 @media (width <= 768px) {
   .sl-header-inner {
-    padding: 0 20px;
     grid-template-columns: auto 1fr auto;
-    gap: 16px;
-  }
-
-  .sl-header-left {
-    order: 1;
-  }
-
-  .sl-header-logo {
-    order: 2;
-  }
-
-  .sl-header-right {
-    order: 3;
+    padding: 0 20px;
     gap: 12px;
   }
 
-  .sl-header.is-hero .sl-header-logo a {
+  .sl-header-logo a {
     font-size: 32px;
-  }
-
-  .sl-header button {
-    font-size: 12px;
   }
 }
